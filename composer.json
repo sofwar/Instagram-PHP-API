@@ -1,0 +1,33 @@
+{
+    "name": "sofwar/instagram",
+    "type": "library",
+    "description": "An easy-to-use PHP Class for accessing Instagram's API.",
+    "keywords": [
+        "instagram",
+        "api"
+    ],
+    "homepage": "https://github.com/sofwar/Instagram-PHP-API",
+    "license": "BSD",
+    "authors": [
+        {
+            "name": "SofWar",
+            "email": "ya.sofwar@yandex.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "ext-curl": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "SofWar\\Instagram\\": "src"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.4-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
