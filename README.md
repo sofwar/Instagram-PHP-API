@@ -102,46 +102,6 @@ getLoginUrl(array(
 ));
 ```
 
-**Optional scope parameters:**
-
-<table>
-	<tr>
-		<th>Scope</th>
-		<th>Legend</th>
-		<th>Methods</th>
-	</tr>
-	<tr>
-		<td><code>basic</code></td>
-		<td>to use all user related methods [default]</td>
-		<td><code>getUser()</code>, <code>getUserFeed()</code>, <code>getUserFollower()</code> etc.</td>
-	</tr>
-	<tr>
-		<td><code>relationships</code></td>
-		<td>to follow and unfollow users</td>
-		<td><code>modifyRelationship()</code></td>
-	</tr>
-	<tr>
-		<td><code>likes</code></td>
-		<td>to like and unlike items</td>
-		<td><code>getMediaLikes()</code>, <code>likeMedia()</code>, <code>deleteLikedMedia()</code></td>
-	</tr>
-	<tr>
-		<td><code>comments</code></td>
-		<td>to create or delete comments</td>
-		<td><code>getMediaComments()</code>, <code>addMediaComment()</code>, <code>deleteMediaComment()</code></td>
-	</tr>
-	<tr>
-		<td><code>public_content</code></td>
-		<td>to read any public profile info and media on a user’s behalf</td>
-		<td><code> - </code></td>
-	</tr>
-	<tr>
-    		<td><code>follower_list</code></td>
-    		<td>to read the list of followers and followed-by users</td>
-    		<td><code>getUserFollower()</code></td>
-    	</tr>
-</table>
-
 ### Get OAuth token
 
 `getOAuthToken($code, <boolean>)`
@@ -156,17 +116,10 @@ getLoginUrl(array(
 
 ### User methods
 
-**Public methods**
-
-- `getUser($id)`
+- `getUser(<$id>)`
 - `searchUser($name, <$limit>)`
 - `getUserMedia($id, <$limit>)`
-
-**Authenticated methods**
-
-- `getUser()`
-- `getUserLikes(<$limit>)`
-- `getUserFeed(<$limit>)`
+- `getUserLikes(<$limit>, <$max_like_id>)`
 - `getUserMedia(<$id>, <$limit>)`
 	- if an `$id` isn't defined or equals `'self'`, it returns the media of the logged in user
 
@@ -174,13 +127,11 @@ getLoginUrl(array(
 
 ### Relationship methods
 
-**Authenticated methods**
-
-- `getUserFollows($id, <$limit>)`
-- `getUserFollower($id, <$limit>)`
+- `getUserFollows(<$limit>)`
+- `getUserFollower(<$limit>)`
 - `getUserRelationship($id)`
 - `modifyRelationship($action, $user)`
-	- `$action` : Action command (follow / unfollow / block / unblock / approve / deny)
+	- `$action` : Action command (follow / unfollow / approve / deny)
 	- `$user` : Target user id
 
 ```php
@@ -198,31 +149,17 @@ Please note that the `modifyRelationship()` method requires the `relationships` 
 
 ### Media methods
 
-**Public methods**
-
 - `getMedia($id)`
-	- authenticated users receive the info, whether the queried media is liked
-- `getPopularMedia()`
-- `searchMedia($lat, $lng, <$distance>, <$minTimestamp>, <$maxTimestamp>)`
-	- `$lat` and `$lng` are coordinates and have to be floats like: `48.145441892290336`,`11.568603515625`
-	- `$distance` : Radial distance in meter (default is 1km = 1000, max. is 5km = 5000)
-	- `$minTimestamp` : All media returned will be taken *later* than this timestamp (default: 5 days ago)
-	- `$maxTimestamp` : All media returned will be taken *earlier* than this timestamp (default: now)
+- `getMediaShort($code)`
+- `searchMedia($lat, $lng, <$distance>)`
 
 > [Sample responses of the Media Endpoints.](http://instagram.com/developer/endpoints/media/)
 
 ### Comment methods
 
-**Public methods**
-
 - `getMediaComments($id)`
-
-**Authenticated methods**
-
 - `addMediaComment($id, $text)`
-	- **restricted access:** please email `apidevelopers[at]instagram.com` for access
 - `deleteMediaComment($id, $commentID)`
-	- the comment must be authored by the authenticated user
 
 ---
 
@@ -234,10 +171,8 @@ Please note that the authenticated methods require the `comments` [scope](#get-l
 
 ### Tag methods
 
-**Public methods**
-
 - `getTag($name)`
-- `getTagMedia($name)`
+- `getTagMedia($name, <$limit>, <$min_tag_id>, <$max_tag_id>)`
 - `searchTags($name)`
 
 > [Sample responses of the Tag Endpoints.](http://instagram.com/developer/endpoints/tags/)
@@ -253,16 +188,6 @@ Please note that the authenticated methods require the `comments` [scope](#get-l
 > [Sample responses of the Likes Endpoints.](http://instagram.com/developer/endpoints/likes/)
 
 All `<...>` parameters are optional. If the limit is undefined, all available results will be returned.
-
-## Instagram videos
-
-Instagram entries are marked with a `type` attribute (`image` or `video`), that allows you to identify videos.
-
-An example of how to embed Instagram videos by using [Video.js](http://www.videojs.com), can be found in the `/example` folder.
-
----
-
-**Please note:** Instagram currently doesn't allow to filter videos.
 
 ---
 
