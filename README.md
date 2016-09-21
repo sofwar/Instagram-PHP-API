@@ -31,7 +31,7 @@ $ composer require cosenary/instagram
 ### Initialize the class
 
 ```php
-use MetzWeb\Instagram\Instagram;
+use SofWar\Instagram\Instagram;
 
 $instagram = new Instagram(array(
 	'apiKey'      => 'YOUR_APP_KEY',
