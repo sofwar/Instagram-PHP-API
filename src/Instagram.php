@@ -77,7 +77,7 @@ class Instagram
      *
      * @var string[]
      */
-    private $_actions = ['follow', 'unfollow', 'approve', 'deny'];
+    private $_actions = ['follow', 'unfollow', 'approve', 'ignore'];
 
     /**
      * Rate limit.
@@ -646,7 +646,7 @@ class Instagram
             $paramString = '&' . http_build_query($params);
         }
 
-        $apiCall = self::API_URL . $function . $authMethod . (('GET' === $method) ? $paramString : null);
+        $apiCall = self::API_URL . $function . $authMethod . (($method === 'GET') ? $paramString : null);
 
         // we want JSON
         $headerData = array('Accept: application/json');

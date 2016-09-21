@@ -131,7 +131,7 @@ getLoginUrl(array(
 - `getUserFollower(<$limit>)`
 - `getUserRelationship($id)`
 - `modifyRelationship($action, $user)`
-	- `$action` : Action command (follow / unfollow / approve / deny)
+	- `$action` : Action command (follow / unfollow / approve / ignore)
 	- `$user` : Target user id
 
 ```php
