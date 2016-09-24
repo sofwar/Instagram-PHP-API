@@ -1,4 +1,4 @@
-# ![Image](example/assets/instagram.png) Instagram PHP API V1
+# Instagram PHP API V1
 
 A PHP wrapper for the Instagram API. Feedback or bug reports are appreciated.
 
@@ -25,7 +25,7 @@ Please note that Instagram mainly refers to »Clients« instead of »Apps«. So 
 I strongly advice using [Composer](https://getcomposer.org) to keep updates as smooth as possible.
 
 ```
-$ composer require cosenary/instagram
+$ composer require sofwar/instagram
 ```
 
 ### Initialize the class
@@ -220,51 +220,6 @@ $result = $instagram->pagination($photos);
 ```
 
 Iteration with `do-while` loop.
-
-## Samples for redirect URLs
-
-<table>
-	<tr>
-		<th>Registered Redirect URI</th>
-		<th>Redirect URI sent to /authorize</th>
-		<th>Valid?</th>
-	</tr>
-	<tr>
-		<td>http://yourcallback.com/</td>
-		<td>http://yourcallback.com/</td>
-		<td>yes</td>
-	</tr>
-	<tr>
-		<td>http://yourcallback.com/</td>
-		<td>http://yourcallback.com/?this=that</td>
-		<td>yes</td>
-	</tr>
-	<tr>
-		<td>http://yourcallback.com/?this=that</td>
-		<td>http://yourcallback.com/</td>
-		<td>no</td>
-	</tr>
-	<tr>
-		<td>http://yourcallback.com/?this=that</td>
-		<td>http://yourcallback.com/?this=that&another=true</td>
-		<td>yes</td>
-	</tr>
-	<tr>
-		<td>http://yourcallback.com/?this=that</td>
-		<td>http://yourcallback.com/?another=true&this=that</td>
-		<td>no</td>
-	</tr>
-	<tr>
-		<td>http://yourcallback.com/callback</td>
-		<td>http://yourcallback.com/</td>
-		<td>no</td>
-	</tr>
-	<tr>
-		<td>http://yourcallback.com/callback</td>
-		<td>http://yourcallback.com/callback/?type=mobile</td>
-		<td>yes</td>
-	</tr>
-</table>
 
 > If you need further information about an endpoint, take a look at the [Instagram API docs](http://instagram.com/developer/authentication/).
 
