@@ -23,11 +23,6 @@
             "SofWar\\Instagram\\": "src"
         }
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.3-dev"
-        }
-    },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }
